@@ -9,9 +9,6 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.AttachMoney
-import androidx.compose.material.icons.filled.CheckCircle
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -250,6 +247,7 @@ private fun SectionHeader(emoji: String, titulo: String, subtitulo: String) {
     }
 }
 
+@OptIn(ExperimentalLayoutApi::class) // <-- Aquí está la corrección principal
 @Composable
 private fun JobRoleCard(role: JobRole) {
     ElevatedCard(
@@ -302,7 +300,7 @@ private fun JobRoleCard(role: JobRole) {
             Spacer(Modifier.height(12.dp))
 
             // Skills chips
-            FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+            androidx.compose.foundation.layout.FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                 role.skills.forEach { skill ->
                     SuggestionChip(
                         onClick = {},
